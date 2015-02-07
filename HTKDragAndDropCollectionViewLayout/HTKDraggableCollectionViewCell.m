@@ -68,7 +68,7 @@
 #pragma mark - Cell Setup
 
 - (void)setupDraggableCell {
-
+    
     // Add our pan gesture to cell
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     self.panGestureRecognizer.delegate = self;
@@ -77,9 +77,9 @@
     // Add our long press to cell
     self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
     // Wait time before we being dragging
-    self.longPressGestureRecognizer.minimumPressDuration = 1.0;
+    self.longPressGestureRecognizer.minimumPressDuration = 0.5;
     self.longPressGestureRecognizer.delegate = self;
-   [self addGestureRecognizer:self.longPressGestureRecognizer];
+    [self addGestureRecognizer:self.longPressGestureRecognizer];
 }
 
 #pragma mark - UIGestureRecognizer Delegates
@@ -98,7 +98,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     if([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && !_allowPan) {
         return NO;
     }
-
+    
     // Determine if user can drag cell
     BOOL cellCanDrag = YES;
     if ([self.draggingDelegate respondsToSelector:@selector(userCanDragCell:)]) {
@@ -110,7 +110,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 #pragma mark - UIGestureRecognizer Handlers
 
 - (void)handleLongPressGesture:(UILongPressGestureRecognizer *)longPressGesture {
-
+    
     switch (longPressGesture.state) {
         case UIGestureRecognizerStateBegan: {
             // Set initial alpha to show user they can

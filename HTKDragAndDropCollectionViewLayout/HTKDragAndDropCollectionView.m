@@ -18,9 +18,9 @@
 //  limitations under the License.
 //
 
-#import "HTKDragAndDropCollectionViewController.h"
+#import "HTKDragAndDropCollectionView.h"
 
-@interface HTKDragAndDropCollectionViewController ()
+@interface HTKDragAndDropCollectionView ()
 
 /**
  * Helper method that will scroll the collectionView up or down
@@ -32,58 +32,72 @@
 
 @end
 
-@implementation HTKDragAndDropCollectionViewController
-
-- (void)loadView {
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[HTKDragAndDropCollectionViewLayout alloc] init]];
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
+@implementation HTKDragAndDropCollectionView
+- (id) initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
+    self = [super initWithFrame:frame collectionViewLayout:layout];
+    if (self) {
+        self.backgroundColor = [UIColor whiteColor];
+        //    self.delegate = self;
+        //    self.dataSource = self;
+        
+        
+        
+        
+    }
+    return self;
 }
+
+/*
+ - (void)loadView {
+ self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[HTKDragAndDropCollectionViewLayout alloc] init]];
+ self.collectionView.backgroundColor = [UIColor whiteColor];
+ self.collectionView.delegate = self;
+ self.collectionView.dataSource = self;
+ }*/
 
 #pragma mark - HTKDraggableCollectionViewCellDelegate
 
 - (void)userDidBeginDraggingCell:(UICollectionViewCell *)cell {
     
-    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionView.collectionViewLayout;
+    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionViewLayout;
     // Set the indexPath that we're beginning to drag
-    flowLayout.draggedIndexPath = [self.collectionView indexPathForCell:cell];
+    flowLayout.draggedIndexPath = [self indexPathForCell:cell];
     // Set it's frame so if we have to reset it, we know where to put it.
     flowLayout.draggedCellFrame = cell.frame;
 }
 
 - (void)userDidEndDraggingCell:(UICollectionViewCell *)cell {
     
-    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionView.collectionViewLayout;
-
+    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionViewLayout;
+    
     // Reset
     [flowLayout resetDragging];
 }
 
 - (void)userDidDragCell:(UICollectionViewCell *)cell withGestureRecognizer:(UIPanGestureRecognizer *)recognizer {
     
-    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionView.collectionViewLayout;
-    CGPoint translation = [recognizer translationInView:self.collectionView];
+    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionViewLayout;
+    CGPoint translation = [recognizer translationInView:self];
     // Determine our new center
     CGPoint newCenter = CGPointMake(recognizer.view.center.x + translation.x,
                                     recognizer.view.center.y + translation.y);
     // Set center
     flowLayout.draggedCellCenter = newCenter;
-    [recognizer setTranslation:CGPointZero inView:self.collectionView];
+    [recognizer setTranslation:CGPointZero inView:self];
     
     // swap items if needed
     [flowLayout exchangeItemsIfNeeded];
     
     // Scroll down if we're holding cell off screen vertically
-    UICollectionViewCell *draggedCell = [self.collectionView cellForItemAtIndexPath:flowLayout.draggedIndexPath];
+    UICollectionViewCell *draggedCell = [self cellForItemAtIndexPath:flowLayout.draggedIndexPath];
     [self scrollIfNeededWhileDraggingCell:draggedCell];
 }
 
 #pragma mark - Helper Methods
 
 - (void)scrollIfNeededWhileDraggingCell:(UICollectionViewCell *)cell {
- 
-    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionView.collectionViewLayout;
+    
+    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionViewLayout;
     if (![flowLayout isDraggingCell]) {
         // If we've stopped dragging, exit
         return;
@@ -91,17 +105,17 @@
     
     CGPoint cellCenter = flowLayout.draggedCellCenter;
     // Offset we will be adjusting
-    CGPoint newOffset = self.collectionView.contentOffset;
+    CGPoint newOffset = self.contentOffset;
     // How far past edge does it need to be before scrolling
     CGFloat buffer = 10;
     
     // Check for scrolling down
-    CGFloat bottomY = self.collectionView.contentOffset.y + CGRectGetHeight(self.collectionView.frame);
+    CGFloat bottomY = self.contentOffset.y + CGRectGetHeight(self.frame);
     if (bottomY < CGRectGetMaxY(cell.frame) - buffer) {
         // We're scrolling down
         newOffset.y += 1;
         
-        if (newOffset.y + CGRectGetHeight(self.collectionView.bounds) > self.collectionView.contentSize.height) {
+        if (newOffset.y + CGRectGetHeight(self.bounds) > self.contentSize.height) {
             return; // Stop moving, went too far
         }
         
@@ -110,7 +124,7 @@
     }
     
     // Check if moving upwards
-    CGFloat offsetY = self.collectionView.contentOffset.y;
+    CGFloat offsetY = self.contentOffset.y;
     if (CGRectGetMinY(cell.frame) + buffer < offsetY) {
         // We're scrolling up
         newOffset.y -= 1;
@@ -124,7 +138,7 @@
     }
     
     // Set new values
-    self.collectionView.contentOffset = newOffset;
+    self.contentOffset = newOffset;
     flowLayout.draggedCellCenter = cellCenter;
     // Repeat until we went to far.
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

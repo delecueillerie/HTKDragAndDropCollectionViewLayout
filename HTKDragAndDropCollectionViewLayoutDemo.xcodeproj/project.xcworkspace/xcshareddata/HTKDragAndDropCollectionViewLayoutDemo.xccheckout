@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1FD52EED-B936-4845-9818-CBBB77449B8E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HTKDragAndDropCollectionViewLayoutDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>98C188EF814A6FD2F38B3D49B8976C1AF50AACBB</key>
+		<string>https://github.com/delecueillerie/HTKDragAndDropCollectionViewLayout.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HTKDragAndDropCollectionViewLayoutDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>98C188EF814A6FD2F38B3D49B8976C1AF50AACBB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/delecueillerie/HTKDragAndDropCollectionViewLayout.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>98C188EF814A6FD2F38B3D49B8976C1AF50AACBB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>98C188EF814A6FD2F38B3D49B8976C1AF50AACBB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HTKDragAndDropCollectionView</string>
+		</dict>
+	</array>
+</dict>
+</plist>

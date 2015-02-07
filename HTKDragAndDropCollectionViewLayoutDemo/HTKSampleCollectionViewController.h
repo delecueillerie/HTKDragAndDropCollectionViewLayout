@@ -19,14 +19,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HTKDragAndDropCollectionViewController.h"
+//#import "HTKDragAndDropCollectionViewController.h"
+#import "HTKDragAndDropCollectionView.h"
 
 /**
  * Sample view controller that demonstrates the drag and drop
  * collection view with custom collection view layout.
  */
-@interface HTKSampleCollectionViewController : HTKDragAndDropCollectionViewController
+@interface HTKSampleCollectionViewController:UICollectionViewController //: HTKDragAndDropCollectionViewController
 
+@property (strong, nonatomic) HTKDragAndDropCollectionView *collectionView;
 
 @end
 

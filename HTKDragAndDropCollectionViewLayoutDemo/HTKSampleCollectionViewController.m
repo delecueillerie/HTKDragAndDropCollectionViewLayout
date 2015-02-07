@@ -46,17 +46,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Register cell
-    [self.collectionView registerClass:[HTKSampleCollectionViewCell class] forCellWithReuseIdentifier:HTKDraggableCollectionViewCellIdentifier];
     
-    // Setup item size
-    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionView.collectionViewLayout;
+    
+    // Setup layout
+    HTKDragAndDropCollectionViewLayout *flowLayout = [[HTKDragAndDropCollectionViewLayout alloc] init];
     CGFloat itemWidth = CGRectGetWidth(self.collectionView.bounds) / 2 - 40;
     flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
     flowLayout.minimumInteritemSpacing = 20;
     flowLayout.lineSpacing = 20;
     flowLayout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
+    
+    // Set up collectionView
+    self.collectionView = [[HTKDragAndDropCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
+    // Register cell
+    [self.collectionView registerClass:[HTKSampleCollectionViewCell class] forCellWithReuseIdentifier:HTKDraggableCollectionViewCellIdentifier];
+    
+    
 }
 
 #pragma mark UICollectionView Datasource/Delegate
@@ -77,7 +82,7 @@
     cell.numberLabel.text = self.dataArray[indexPath.row];
     
     // Set our delegate for dragging
-    cell.draggingDelegate = self;
+    cell.draggingDelegate = self.collectionView;
     
     return cell;
 }
@@ -90,7 +95,7 @@
 }
 
 - (void)userDidEndDraggingCell:(UICollectionViewCell *)cell {
-    [super userDidEndDraggingCell:cell];
+    [self.collectionView userDidEndDraggingCell:cell];
     
     HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionView.collectionViewLayout;
     

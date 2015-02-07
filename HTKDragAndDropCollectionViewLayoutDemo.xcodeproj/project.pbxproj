@@ -14,19 +14,9 @@
 		0E184B6A1A0FB90B0017FF75 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E184B681A0FB90B0017FF75 /* LaunchScreen.xib */; };
 		0E184B861A0FBA060017FF75 /* HTKDraggableCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B811A0FBA060017FF75 /* HTKDraggableCollectionViewCell.m */; };
 		0E184B871A0FBA060017FF75 /* HTKDragAndDropCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B831A0FBA060017FF75 /* HTKDragAndDropCollectionViewLayout.m */; };
-		0E184B881A0FBA060017FF75 /* HTKDragAndDropCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B851A0FBA060017FF75 /* HTKDragAndDropCollectionViewController.m */; };
+		0E184B881A0FBA060017FF75 /* HTKDragAndDropCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B851A0FBA060017FF75 /* HTKDragAndDropCollectionView.m */; };
 		0E184B8B1A0FBBF80017FF75 /* HTKSampleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B8A1A0FBBF80017FF75 /* HTKSampleCollectionViewCell.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		0E184B701A0FB90B0017FF75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E184B4E1A0FB90B0017FF75 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E184B551A0FB90B0017FF75;
-			remoteInfo = HTKDragAndDropCollectionViewLayoutDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0E184B561A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTKDragAndDropCollectionViewLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,13 +28,12 @@
 		0E184B611A0FB90B0017FF75 /* HTKSampleCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTKSampleCollectionViewController.m; sourceTree = "<group>"; };
 		0E184B661A0FB90B0017FF75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0E184B691A0FB90B0017FF75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0E184B6F1A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTKDragAndDropCollectionViewLayoutDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E184B801A0FBA060017FF75 /* HTKDraggableCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTKDraggableCollectionViewCell.h; sourceTree = "<group>"; };
 		0E184B811A0FBA060017FF75 /* HTKDraggableCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKDraggableCollectionViewCell.m; sourceTree = "<group>"; };
 		0E184B821A0FBA060017FF75 /* HTKDragAndDropCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTKDragAndDropCollectionViewLayout.h; sourceTree = "<group>"; };
 		0E184B831A0FBA060017FF75 /* HTKDragAndDropCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKDragAndDropCollectionViewLayout.m; sourceTree = "<group>"; };
-		0E184B841A0FBA060017FF75 /* HTKDragAndDropCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTKDragAndDropCollectionViewController.h; sourceTree = "<group>"; };
-		0E184B851A0FBA060017FF75 /* HTKDragAndDropCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKDragAndDropCollectionViewController.m; sourceTree = "<group>"; };
+		0E184B841A0FBA060017FF75 /* HTKDragAndDropCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTKDragAndDropCollectionView.h; sourceTree = "<group>"; };
+		0E184B851A0FBA060017FF75 /* HTKDragAndDropCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKDragAndDropCollectionView.m; sourceTree = "<group>"; };
 		0E184B891A0FBBF80017FF75 /* HTKSampleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTKSampleCollectionViewCell.h; sourceTree = "<group>"; };
 		0E184B8A1A0FBBF80017FF75 /* HTKSampleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKSampleCollectionViewCell.m; sourceTree = "<group>"; };
 		0E184B8C1A0FC8140017FF75 /* HTKDragAndDropCollectionViewLayoutConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTKDragAndDropCollectionViewLayoutConstants.h; sourceTree = "<group>"; };
@@ -52,13 +41,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		0E184B531A0FB90B0017FF75 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0E184B6C1A0FB90B0017FF75 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -81,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				0E184B561A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemo.app */,
-				0E184B6F1A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				0E184B8C1A0FC8140017FF75 /* HTKDragAndDropCollectionViewLayoutConstants.h */,
-				0E184B841A0FBA060017FF75 /* HTKDragAndDropCollectionViewController.h */,
-				0E184B851A0FBA060017FF75 /* HTKDragAndDropCollectionViewController.m */,
+				0E184B841A0FBA060017FF75 /* HTKDragAndDropCollectionView.h */,
+				0E184B851A0FBA060017FF75 /* HTKDragAndDropCollectionView.m */,
 				0E184B821A0FBA060017FF75 /* HTKDragAndDropCollectionViewLayout.h */,
 				0E184B831A0FBA060017FF75 /* HTKDragAndDropCollectionViewLayout.m */,
 				0E184B801A0FBA060017FF75 /* HTKDraggableCollectionViewCell.h */,
@@ -145,24 +126,6 @@
 			productReference = 0E184B561A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0E184B6E1A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0E184B7C1A0FB90B0017FF75 /* Build configuration list for PBXNativeTarget "HTKDragAndDropCollectionViewLayoutDemoTests" */;
-			buildPhases = (
-				0E184B6B1A0FB90B0017FF75 /* Sources */,
-				0E184B6C1A0FB90B0017FF75 /* Frameworks */,
-				0E184B6D1A0FB90B0017FF75 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0E184B711A0FB90B0017FF75 /* PBXTargetDependency */,
-			);
-			name = HTKDragAndDropCollectionViewLayoutDemoTests;
-			productName = HTKDragAndDropCollectionViewLayoutDemoTests;
-			productReference = 0E184B6F1A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -174,10 +137,6 @@
 				TargetAttributes = {
 					0E184B551A0FB90B0017FF75 = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					0E184B6E1A0FB90B0017FF75 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 0E184B551A0FB90B0017FF75;
 					};
 				};
 			};
@@ -195,7 +154,6 @@
 			projectRoot = "";
 			targets = (
 				0E184B551A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemo */,
-				0E184B6E1A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -210,13 +168,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0E184B6D1A0FB90B0017FF75 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -225,7 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E184B621A0FB90B0017FF75 /* HTKSampleCollectionViewController.m in Sources */,
-				0E184B881A0FBA060017FF75 /* HTKDragAndDropCollectionViewController.m in Sources */,
+				0E184B881A0FBA060017FF75 /* HTKDragAndDropCollectionView.m in Sources */,
 				0E184B8B1A0FBBF80017FF75 /* HTKSampleCollectionViewCell.m in Sources */,
 				0E184B861A0FBA060017FF75 /* HTKDraggableCollectionViewCell.m in Sources */,
 				0E184B5F1A0FB90B0017FF75 /* AppDelegate.m in Sources */,
@@ -234,22 +185,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0E184B6B1A0FB90B0017FF75 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0E184B711A0FB90B0017FF75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0E184B551A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemo */;
-			targetProxy = 0E184B701A0FB90B0017FF75 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0E184B681A0FB90B0017FF75 /* LaunchScreen.xib */ = {
@@ -363,40 +299,6 @@
 			};
 			name = Release;
 		};
-		0E184B7D1A0FB90B0017FF75 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HTKDragAndDropCollectionViewLayoutDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HTKDragAndDropCollectionViewLayoutDemo.app/HTKDragAndDropCollectionViewLayoutDemo";
-			};
-			name = Debug;
-		};
-		0E184B7E1A0FB90B0017FF75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HTKDragAndDropCollectionViewLayoutDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HTKDragAndDropCollectionViewLayoutDemo.app/HTKDragAndDropCollectionViewLayoutDemo";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -416,14 +318,7 @@
 				0E184B7B1A0FB90B0017FF75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		0E184B7C1A0FB90B0017FF75 /* Build configuration list for PBXNativeTarget "HTKDragAndDropCollectionViewLayoutDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0E184B7D1A0FB90B0017FF75 /* Debug */,
-				0E184B7E1A0FB90B0017FF75 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

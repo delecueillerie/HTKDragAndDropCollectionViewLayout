@@ -26,6 +26,6 @@
  * CollectionViewController that should be sub-classed to implement
  * drag and drop of cells.
  */
-@interface HTKDragAndDropCollectionViewController : UICollectionViewController <HTKDraggableCollectionViewCellDelegate>
+@interface HTKDragAndDropCollectionView : UICollectionView <HTKDraggableCollectionViewCellDelegate>
 
 @end
