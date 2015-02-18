@@ -33,6 +33,13 @@
 @end
 
 @implementation HTKDragAndDropCollectionView
+
+
+
+
+
+#pragma mark - initializer
+
 - (id) initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {

@@ -52,6 +52,8 @@ static NSString *HTKDraggableCollectionViewCellIdentifier = @"HTKDraggableCollec
  */
 - (BOOL)userCanDragCell:(UICollectionViewCell *)cell;
 
+- (void)setupCell:(UICollectionViewCell *)cell;
+
 @end
 
 /**
@@ -65,5 +67,9 @@ static NSString *HTKDraggableCollectionViewCellIdentifier = @"HTKDraggableCollec
  * Delegate for dragging the cell.
  */
 @property (nonatomic, weak) id<HTKDraggableCollectionViewCellDelegate> draggingDelegate;
+
+
+
+
 
 @end

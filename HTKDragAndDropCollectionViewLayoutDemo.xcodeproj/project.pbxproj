@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09D694F51A8BE2DA00238C7C /* HTKDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09D694F41A8BE2DA00238C7C /* HTKDemo.storyboard */; };
+		09D694F81A8FA53900238C7C /* HTKSampleCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D694F71A8FA53900238C7C /* HTKSampleCollectionViewLayout.m */; };
 		0E184B5C1A0FB90B0017FF75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5B1A0FB90B0017FF75 /* main.m */; };
 		0E184B5F1A0FB90B0017FF75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B5E1A0FB90B0017FF75 /* AppDelegate.m */; };
 		0E184B621A0FB90B0017FF75 /* HTKSampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E184B611A0FB90B0017FF75 /* HTKSampleCollectionViewController.m */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09D694F41A8BE2DA00238C7C /* HTKDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HTKDemo.storyboard; sourceTree = "<group>"; };
+		09D694F61A8FA53900238C7C /* HTKSampleCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTKSampleCollectionViewLayout.h; sourceTree = "<group>"; };
+		09D694F71A8FA53900238C7C /* HTKSampleCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKSampleCollectionViewLayout.m; sourceTree = "<group>"; };
 		0E184B561A0FB90B0017FF75 /* HTKDragAndDropCollectionViewLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTKDragAndDropCollectionViewLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E184B5A1A0FB90B0017FF75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E184B5B1A0FB90B0017FF75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -74,10 +79,13 @@
 				0E184B5E1A0FB90B0017FF75 /* AppDelegate.m */,
 				0E184B601A0FB90B0017FF75 /* HTKSampleCollectionViewController.h */,
 				0E184B611A0FB90B0017FF75 /* HTKSampleCollectionViewController.m */,
+				09D694F61A8FA53900238C7C /* HTKSampleCollectionViewLayout.h */,
+				09D694F71A8FA53900238C7C /* HTKSampleCollectionViewLayout.m */,
 				0E184B891A0FBBF80017FF75 /* HTKSampleCollectionViewCell.h */,
 				0E184B8A1A0FBBF80017FF75 /* HTKSampleCollectionViewCell.m */,
 				0E184B661A0FB90B0017FF75 /* Images.xcassets */,
 				0E184B681A0FB90B0017FF75 /* LaunchScreen.xib */,
+				09D694F41A8BE2DA00238C7C /* HTKDemo.storyboard */,
 				0E184B591A0FB90B0017FF75 /* Supporting Files */,
 			);
 			path = HTKDragAndDropCollectionViewLayoutDemo;
@@ -165,6 +173,7 @@
 			files = (
 				0E184B6A1A0FB90B0017FF75 /* LaunchScreen.xib in Resources */,
 				0E184B671A0FB90B0017FF75 /* Images.xcassets in Resources */,
+				09D694F51A8BE2DA00238C7C /* HTKDemo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09D694F81A8FA53900238C7C /* HTKSampleCollectionViewLayout.m in Sources */,
 				0E184B621A0FB90B0017FF75 /* HTKSampleCollectionViewController.m in Sources */,
 				0E184B881A0FBA060017FF75 /* HTKDragAndDropCollectionView.m in Sources */,
 				0E184B8B1A0FBBF80017FF75 /* HTKSampleCollectionViewCell.m in Sources */,

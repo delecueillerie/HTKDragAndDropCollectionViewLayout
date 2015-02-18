@@ -72,14 +72,24 @@
 
 @implementation HTKDragAndDropCollectionViewLayout
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
+
+#pragma mark - accessors 
+-(NSMutableArray *) itemArray {
+    if (!_itemArray) {
         _itemArray = [NSMutableArray array];
+    }
+    return _itemArray;
+}
+
+-(NSMutableDictionary *) itemDictionary {
+    if (!_itemDictionary) {
         _itemDictionary = [NSMutableDictionary dictionary];
     }
-    return self;
+    return _itemDictionary;
 }
+
+
+#pragma mark - 
 
 - (void)prepareLayout {
     [super prepareLayout];
@@ -196,7 +206,7 @@
 - (NSInteger)numberOfItemsPerRow {
     // Determine how many items we can fit per row
     CGFloat collectionViewWidth = CGRectGetWidth(self.collectionView.bounds) - self.sectionInset.right - self.sectionInset.left;
-    NSInteger numberOfItems = collectionViewWidth / (self.itemSize.width + _minimumInteritemSpacing);
+    NSInteger numberOfItems = collectionViewWidth / (self.itemSize.width + [self minimumInteritemSpacing]);
     
     return numberOfItems;
 }
@@ -204,8 +214,8 @@
 - (CGFloat)minimumInteritemSpacing {
     // return minimum item spacing
     CGFloat collectionViewWidth = CGRectGetWidth(self.collectionView.bounds) - self.sectionInset.right - self.sectionInset.left;
-    CGFloat actualItemSpacing = MAX(_minimumInteritemSpacing, collectionViewWidth - (self.numberOfItemsPerRow * self.itemSize.width));
-    return actualItemSpacing;
+    CGFloat itemSpacing = collectionViewWidth/20.0f;
+    return itemSpacing;
 }
 
 #pragma mark - Drag and Drop methods

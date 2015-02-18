@@ -25,7 +25,7 @@
  * Currently supports multiple sections but no section header/footers. (In progress)
  * It does not create a "ghost" or "dummy" cell to move around while dragging.
  */
-@interface HTKDragAndDropCollectionViewLayout : UICollectionViewLayout
+@interface HTKDragAndDropCollectionViewLayout : UICollectionViewFlowLayout
 
 #pragma mark - Layout Properties
 

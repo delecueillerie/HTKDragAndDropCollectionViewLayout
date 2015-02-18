@@ -22,8 +22,10 @@
 
 @implementation HTKSampleCollectionViewCell
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+
+
+-(instancetype) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
         [self setupCell];
     }

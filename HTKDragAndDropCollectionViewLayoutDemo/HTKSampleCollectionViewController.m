@@ -32,35 +32,33 @@
 
 @implementation HTKSampleCollectionViewController
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        // Create Array for Demo data and fill it with 50 items
+#pragma mark - accessors
+
+-(NSMutableArray *) dataArray {
+    if (!_dataArray ) {
         _dataArray = [NSMutableArray array];
         for (NSUInteger i = 0; i < 50; i++) {
             [_dataArray addObject:[NSString stringWithFormat:@"%lu", i]];
         }
     }
-    return self;
+    return _dataArray;
 }
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
-    // Setup layout
-    HTKDragAndDropCollectionViewLayout *flowLayout = [[HTKDragAndDropCollectionViewLayout alloc] init];
-    CGFloat itemWidth = CGRectGetWidth(self.collectionView.bounds) / 2 - 40;
-    flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
-    flowLayout.minimumInteritemSpacing = 20;
-    flowLayout.lineSpacing = 20;
-    flowLayout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
-    
+
     // Set up collectionView
-    self.collectionView = [[HTKDragAndDropCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
+    /*
+    self.collectionView = [[HTKDragAndDropCollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.collectionViewLayout];
     // Register cell
     [self.collectionView registerClass:[HTKSampleCollectionViewCell class] forCellWithReuseIdentifier:HTKDraggableCollectionViewCellIdentifier];
-    
+    */
     
 }
 
