@@ -22,6 +22,8 @@
 
 @interface HTKDragAndDropCollectionView ()
 
+@property (strong, nonatomic) HTKDragAndDropCollectionViewLayout *layout;
+
 /**
  * Helper method that will scroll the collectionView up or down
  * based on if the cell being dragged is out of it's visible bounds or not.
@@ -35,7 +37,14 @@
 @implementation HTKDragAndDropCollectionView
 
 
+#pragma mark - accessors
 
+-(HTKDragAndDropCollectionViewLayout *) layout {
+    if (!_layout) {
+        _layout = (HTKDragAndDropCollectionViewLayout *) self.collectionViewLayout;
+    }
+    return _layout;
+}
 
 
 #pragma mark - initializer
@@ -44,60 +53,65 @@
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        //    self.delegate = self;
-        //    self.dataSource = self;
-        
-        
-        
-        
     }
     return self;
 }
 
-/*
- - (void)loadView {
- self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[[HTKDragAndDropCollectionViewLayout alloc] init]];
- self.collectionView.backgroundColor = [UIColor whiteColor];
- self.collectionView.delegate = self;
- self.collectionView.dataSource = self;
- }*/
 
 #pragma mark - HTKDraggableCollectionViewCellDelegate
 
-- (void)userDidBeginDraggingCell:(UICollectionViewCell *)cell {
-    
-    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionViewLayout;
-    // Set the indexPath that we're beginning to drag
-    flowLayout.draggedIndexPath = [self indexPathForCell:cell];
-    // Set it's frame so if we have to reset it, we know where to put it.
-    flowLayout.draggedCellFrame = cell.frame;
+- (void)userWillDragCell:(UICollectionViewCell *)cell withGestureRecognizer:(UIPanGestureRecognizer *)recognizer {
+    self.draggedIndexPath = [self indexPathForCell:cell];
+    [self.layout invalidateLayout];
 }
 
-- (void)userDidEndDraggingCell:(UICollectionViewCell *)cell {
+- (void)userDidEndDraggingCell:(UICollectionViewCell *)cell withGestureRecognizer:(UIPanGestureRecognizer *)recognizer{
     
-    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionViewLayout;
+    self.intersectPath = [self indexPathForItemAtPoint:cell.center];
     
-    // Reset
-    [flowLayout resetDragging];
+    //NSLog(@"intersectPath %li", (long)self.intersectPath.item);
+    //NSLog(@"intersectAttributes %@", self.intersectAttributes.description);
+    
+    
+    if (self.intersectPath != nil && ![self.intersectPath isEqual:self.draggedIndexPath]) {
+        // Create a "hit area" that's 20 pt over the center of the intersected cell center
+        CGPoint intersectOrigin = [self layoutAttributesForItemAtIndexPath:self.intersectPath].frame.origin;
+        CGRect centerBox = CGRectMake(intersectOrigin.x, intersectOrigin.y, 200.0, 200.0);
+
+        // Determine if we need to move items around
+        if ( CGRectContainsPoint(centerBox, cell.center)) {
+            // Animate change
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.HTKDragAndDropCollectionViewDelegate moveItemAtIndexPath:self.draggedIndexPath toIndexPath:self.intersectPath];
+                [self moveItemAtIndexPath:self.draggedIndexPath toIndexPath:self.intersectPath];
+            }];
+            
+            self.intersectPath = nil;
+            self.draggedIndexPath = nil;
+        }
+    } else {
+        // Animate change
+        [UIView animateWithDuration:0.5 animations:^{
+            cell.center = [self layoutAttributesForItemAtIndexPath:self.draggedIndexPath].center;
+            //FYI moveItemAtIndexPath:self.draggedIndexPath toIndexPath: bug when move the same item twice
+            //[self moveItemAtIndexPath:self.draggedIndexPath toIndexPath:self.draggedIndexPath];
+        }];
+        self.draggedIndexPath = nil;
+    }
 }
 
 - (void)userDidDragCell:(UICollectionViewCell *)cell withGestureRecognizer:(UIPanGestureRecognizer *)recognizer {
     
-    HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionViewLayout;
     CGPoint translation = [recognizer translationInView:self];
-    // Determine our new center
+    // Determine the new center of the cell
     CGPoint newCenter = CGPointMake(recognizer.view.center.x + translation.x,
                                     recognizer.view.center.y + translation.y);
-    // Set center
-    flowLayout.draggedCellCenter = newCenter;
+
+    cell.center = newCenter;
     [recognizer setTranslation:CGPointZero inView:self];
-    
-    // swap items if needed
-    [flowLayout exchangeItemsIfNeeded];
-    
+
     // Scroll down if we're holding cell off screen vertically
-    UICollectionViewCell *draggedCell = [self cellForItemAtIndexPath:flowLayout.draggedIndexPath];
-    [self scrollIfNeededWhileDraggingCell:draggedCell];
+    // [self scrollIfNeededWhileDraggingCell:draggedCell];
 }
 
 #pragma mark - Helper Methods
@@ -105,11 +119,7 @@
 - (void)scrollIfNeededWhileDraggingCell:(UICollectionViewCell *)cell {
     
     HTKDragAndDropCollectionViewLayout *flowLayout = (HTKDragAndDropCollectionViewLayout *)self.collectionViewLayout;
-    if (![flowLayout isDraggingCell]) {
-        // If we've stopped dragging, exit
-        return;
-    }
-    
+
     CGPoint cellCenter = flowLayout.draggedCellCenter;
     // Offset we will be adjusting
     CGPoint newOffset = self.contentOffset;

@@ -33,12 +33,12 @@ static NSString *HTKDraggableCollectionViewCellIdentifier = @"HTKDraggableCollec
 /**
  * Called when user starts to drag
  */
-- (void)userDidBeginDraggingCell:(UICollectionViewCell *)cell;
+- (void)userWillDragCell:(UICollectionViewCell *)cell withGestureRecognizer:(UIPanGestureRecognizer *)recognizer;
 
 /**
  * Called when user ends dragging.
  */
-- (void)userDidEndDraggingCell:(UICollectionViewCell *)cell;
+- (void)userDidEndDraggingCell:(UICollectionViewCell *)cell withGestureRecognizer:(UIPanGestureRecognizer *)recognizer;
 
 /**
  * Called while user is dragging the cell

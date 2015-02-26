@@ -41,7 +41,6 @@
 		0E184B851A0FBA060017FF75 /* HTKDragAndDropCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKDragAndDropCollectionView.m; sourceTree = "<group>"; };
 		0E184B891A0FBBF80017FF75 /* HTKSampleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTKSampleCollectionViewCell.h; sourceTree = "<group>"; };
 		0E184B8A1A0FBBF80017FF75 /* HTKSampleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTKSampleCollectionViewCell.m; sourceTree = "<group>"; };
-		0E184B8C1A0FC8140017FF75 /* HTKDragAndDropCollectionViewLayoutConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTKDragAndDropCollectionViewLayoutConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +102,6 @@
 		0E184B7F1A0FB94B0017FF75 /* HTKDragAndDropCollectionViewLayout */ = {
 			isa = PBXGroup;
 			children = (
-				0E184B8C1A0FC8140017FF75 /* HTKDragAndDropCollectionViewLayoutConstants.h */,
 				0E184B841A0FBA060017FF75 /* HTKDragAndDropCollectionView.h */,
 				0E184B851A0FBA060017FF75 /* HTKDragAndDropCollectionView.m */,
 				0E184B821A0FBA060017FF75 /* HTKDragAndDropCollectionViewLayout.h */,

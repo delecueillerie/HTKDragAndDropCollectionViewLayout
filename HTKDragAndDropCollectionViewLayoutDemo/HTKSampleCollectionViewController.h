@@ -26,7 +26,7 @@
  * Sample view controller that demonstrates the drag and drop
  * collection view with custom collection view layout.
  */
-@interface HTKSampleCollectionViewController:UICollectionViewController //: HTKDragAndDropCollectionViewController
+@interface HTKSampleCollectionViewController:UICollectionViewController <HTKDragAndDropCollectionViewProtocol> //: HTKDragAndDropCollectionViewController
 
 @property (strong, nonatomic) HTKDragAndDropCollectionView *collectionView;
 

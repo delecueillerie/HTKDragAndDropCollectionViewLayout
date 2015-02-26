@@ -26,7 +26,7 @@
 /**
  * Sample data array we're reordering
  */
-@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *mDataArray;
 
 @end
 
@@ -34,14 +34,14 @@
 
 #pragma mark - accessors
 
--(NSMutableArray *) dataArray {
-    if (!_dataArray ) {
-        _dataArray = [NSMutableArray array];
+-(NSMutableArray *) mDataArray {
+    if (!_mDataArray ) {
+        _mDataArray = [NSMutableArray array];
         for (NSUInteger i = 0; i < 50; i++) {
-            [_dataArray addObject:[NSString stringWithFormat:@"%lu", i]];
+            [_mDataArray addObject:[NSString stringWithFormat:@"%lu", i]];
         }
     }
-    return _dataArray;
+    return _mDataArray;
 }
 
 
@@ -51,6 +51,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    HTKDragAndDropCollectionView *collectionView = (HTKDragAndDropCollectionView *)self.collectionView;
+    collectionView.HTKDragAndDropCollectionViewDelegate = self;
     
 
     // Set up collectionView
@@ -69,7 +71,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    return self.mDataArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,7 +79,7 @@
     HTKSampleCollectionViewCell *cell = (HTKSampleCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:HTKDraggableCollectionViewCellIdentifier forIndexPath:indexPath];
     
     // Set number on cell
-    cell.numberLabel.text = self.dataArray[indexPath.row];
+    cell.numberLabel.text = self.mDataArray[indexPath.row];
     
     // Set our delegate for dragging
     cell.draggingDelegate = self.collectionView;
@@ -85,6 +87,7 @@
     return cell;
 }
 
+/*
 #pragma mark - HTKDraggableCollectionViewCellDelegate
 
 - (BOOL)userCanDragCell:(UICollectionViewCell *)cell {
@@ -104,6 +107,20 @@
         [self.dataArray removeObjectAtIndex:flowLayout.draggedIndexPath.row];
         [self.dataArray insertObject:objectToMove atIndex:flowLayout.finalIndexPath.row];
     }
+}
+*/
+
+#pragma mark - HTKDraggableCollectionViewDelegate
+
+-(void) switchItemAtIndexPath:(NSIndexPath *)pathFrom withItemAtIndexPath:(NSIndexPath *)pathTo {
+    NSLog(@"switch %li - %li",(long)pathFrom.item, (long)pathTo.item);
+    [self.mDataArray exchangeObjectAtIndex:pathFrom.item withObjectAtIndex:pathTo.item];
+}
+
+- (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath {
+    id object = [self.mDataArray objectAtIndex:indexPath.item];
+    [self.mDataArray removeObjectAtIndex:indexPath.item];
+    [self.mDataArray insertObject:object atIndex:newIndexPath.item];
 }
 
 @end

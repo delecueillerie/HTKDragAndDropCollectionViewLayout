@@ -26,6 +26,19 @@
  * CollectionViewController that should be sub-classed to implement
  * drag and drop of cells.
  */
+
+@protocol HTKDragAndDropCollectionViewProtocol <UICollectionViewDataSource>
+
+-(void) switchItemAtIndexPath:(NSIndexPath *)pathFrom withItemAtIndexPath:(NSIndexPath *)pathTo;
+- (void)moveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;
+@end
+
+
+
 @interface HTKDragAndDropCollectionView : UICollectionView <HTKDraggableCollectionViewCellDelegate>
 
+@property(nonatomic, weak) id <HTKDragAndDropCollectionViewProtocol> HTKDragAndDropCollectionViewDelegate;
+
+@property (strong, nonatomic) NSIndexPath *draggedIndexPath;
+@property (strong, nonatomic) NSIndexPath *intersectPath;
 @end

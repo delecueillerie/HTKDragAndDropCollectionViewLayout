@@ -19,7 +19,6 @@
 //
 
 #import "HTKDraggableCollectionViewCell.h"
-#import "HTKDragAndDropCollectionViewLayoutConstants.h"
 
 @interface HTKDraggableCollectionViewCell () <UIGestureRecognizerDelegate>
 
@@ -76,9 +75,6 @@
 }
 
 
-
-
-
 #pragma mark - Cell Setup
 
 - (void)setupDraggableCell {
@@ -91,14 +87,14 @@
     // Add our long press to cell
     self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
     // Wait time before we being dragging
-    self.longPressGestureRecognizer.minimumPressDuration = 0.5;
+    self.longPressGestureRecognizer.minimumPressDuration = 0.3;
     self.longPressGestureRecognizer.delegate = self;
     [self addGestureRecognizer:self.longPressGestureRecognizer];
 }
 
 #pragma mark - UIGestureRecognizer Delegates
 
-- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     if ([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         return YES;
@@ -129,7 +125,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         case UIGestureRecognizerStateBegan: {
             // Set initial alpha to show user they can
             // begin dragging.
-            self.alpha = HTKDraggableCellInitialDragAlphaValue;
             self.allowPan = YES;
             break;
         }
@@ -144,11 +139,6 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
             // Cause pan to cancel
             self.panGestureRecognizer.enabled = NO;
             self.panGestureRecognizer.enabled = YES;
-            // Set alpha back
-            self.alpha = 1.0;
-            if ([self.draggingDelegate respondsToSelector:@selector(userDidEndDraggingCell:)]) {
-                [self.draggingDelegate userDidEndDraggingCell:self];
-            }
             break;
         }
         default:
@@ -160,8 +150,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan: {
-            if ([self.draggingDelegate respondsToSelector:@selector(userDidBeginDraggingCell:)]) {
-                [self.draggingDelegate userDidBeginDraggingCell:self];
+            if ([self.draggingDelegate respondsToSelector:@selector(userWillDragCell:withGestureRecognizer:)]) {
+                [self.draggingDelegate userWillDragCell:self withGestureRecognizer:panGesture];
             }
             break;
         }
@@ -174,10 +164,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
         case UIGestureRecognizerStateEnded: {
-            // Set alpha back
-            self.alpha = 1.0;
-            if ([self.draggingDelegate respondsToSelector:@selector(userDidEndDraggingCell:)]) {
-                [self.draggingDelegate userDidEndDraggingCell:self];
+            if ([self.draggingDelegate respondsToSelector:@selector(userDidEndDraggingCell:withGestureRecognizer:)]) {
+                [self.draggingDelegate userDidEndDraggingCell:self withGestureRecognizer:panGesture];
             }
             break;
         }
